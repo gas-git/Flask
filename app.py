@@ -2,17 +2,35 @@ from flask import Flask
 
 import json
 
+import time
+
+
+
 app = Flask(__name__)
 
 
 @app.route('/')
 def hello():
 
-    for i in range(1, 5000):
-        with open('stress.json') as stress_file:
-            
+    t = time.localtime()
+    current_time = time.strftime("%H:%M:%S", t)
+    print(current_time)
 
+    for i in range(1, 500):
+        with open('stress.json', "r") as stress_file:
+            
             data = json.load(stress_file)
+            stress_file.close()
+
+            for item in data['testing']:
+                item['Time'] = item['Time'] = current_time
+
+
+            with open('stress.json', "w") as stress_file:
+                json.dump(data, stress_file)
+                stress_file.close()
+
+        
     return data
 
 
