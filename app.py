@@ -10,8 +10,10 @@ def hello():
 
     for i in range(1, 5000):
         with open('stress.json') as stress_file:
+            
+
             data = json.load(stress_file)
-        return data
+    return data
 
 
 if __name__ == "__main__":
