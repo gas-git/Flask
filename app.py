@@ -16,7 +16,7 @@ def hello():
     current_time = time.strftime("%H:%M:%S", t)
     print(current_time)
 
-    for i in range(1, 500):
+    for i in range(1, 5):
         with open('stress.json', "r") as stress_file:
             
             data = json.load(stress_file)
@@ -31,7 +31,7 @@ def hello():
                 stress_file.close()
 
         
-    return data
+            return data
 
 
 if __name__ == "__main__":
